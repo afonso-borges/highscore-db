@@ -31,9 +31,14 @@ func TestWorld(t *testing.T) {
 func TestCharacter(t *testing.T) {
 	t.Run("Teste de Tipagem", func(t *testing.T) {
 		c := Character{
-			CharacterName: "Yukiezera General",
-			FormerNames:   []string{"Yukie Mangote Loko"},
-			Level:         1306,
+			Guild{
+				GuildName: "Inabra",
+				Players:   10,
+			},
+			"Yukiezera General",
+			[]string{"Yukiezera Mangote Loko, Yukiezera Obezord"},
+			1306,
+			133333,
 		}
 
 		actualType := reflect.TypeOf(c)

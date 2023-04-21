@@ -13,6 +13,7 @@ func (w World) String() string {
 }
 
 type Character struct {
+	Guild
 	CharacterName string
 	FormerNames   []string
 	Level         int
