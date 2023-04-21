@@ -1,1 +1,1 @@
-# highscore-tables
+# highscore-db
