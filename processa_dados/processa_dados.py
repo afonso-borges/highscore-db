@@ -1,9 +1,7 @@
 import requests
 import json
 import os
-
-
-import requests
+import datetime
 
 
 def get_guild_members(guild_name: str) -> list:
@@ -66,6 +64,9 @@ def update_characters_exp(
             if highscore_char:
                 char["Exp"] = highscore_char["value"]
 
+            if not char.get("Exp"):
+                char["Exp"] = 0
+
         with open(characters_path, "w") as f:
             json.dump(characters, f)
 
@@ -74,17 +75,16 @@ def update_characters_exp(
     return False
 
 
-def full_process_alchemist(guild_name, world, index):
+def full_process_alchemist(guild_name, world):
     json_path = f"{guild_name}_characters.json"
 
     if not create_guild_members_json(guild_name):
         return False
 
-    if not update_characters_exp(
-        json_path,
-        world,
-        index,
-    ):
-        return False
+    for i in range(21):
+        if i < 1:
+            continue
+        if not update_characters_exp(json_path, world, i):
+            return False
 
     return True
