@@ -17,7 +17,8 @@ func main() {
 
 	r := chi.NewRouter()
 
-	r.Get("/", handlers.CreateCharacters)
+	r.Get("/ping", handlers.Ping)
+	r.Post("/", handlers.CreateCharacters)
 	r.Post("/1", handlers.Create)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
