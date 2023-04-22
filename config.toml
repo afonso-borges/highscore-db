@@ -1,0 +1,8 @@
+[api]
+port = "9000"
+
+[database]
+host = "localhost"
+user = "joao"
+pass = "1122"
+name = "highscoredb"

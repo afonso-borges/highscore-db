@@ -1,27 +1,23 @@
 package models
 
-import "fmt"
-
 type World struct {
-	Name      string
-	Guilds    []string
-	BattleEye string
-}
-
-func (w World) String() string {
-	return fmt.Sprintf("World: %s", w.Name)
+	ID        int64    `json:"id"`
+	Name      string   `json:"name"`
+	Guilds    []string `json:"guild"`
+	BattleEye string   `json:"battle eye"`
 }
 
 type Character struct {
-	Guild
-	CharacterName string
-	FormerNames   []string
-	Level         int
-	Exp           int
+	ID            int64  `json:"id"`
+	CharacterName string `json:"CharacterName"`
+	Level         int    `json:"level"`
+	Exp           int    `json:"exp amount"`
+	GuildIn       string `json:"guild"`
 }
 
 type Guild struct {
 	World
-	GuildName string
-	Players   int
+	ID        int64  `json:"id"`
+	GuildName string `json:"name"`
+	Players   int    `json:"players"`
 }
