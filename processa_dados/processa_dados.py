@@ -1,7 +1,6 @@
 import requests
 import json
 import os
-import datetime
 
 
 def get_guild_members(guild_name: str) -> list:
