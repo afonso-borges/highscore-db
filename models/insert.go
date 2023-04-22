@@ -9,20 +9,6 @@ import (
 	"os"
 )
 
-func Insert(guild Guild) (id int64, err error) {
-	conn, err := db.OpenConnection()
-	if err != nil {
-		return
-	}
-	defer conn.Close()
-
-	sql := `INSERT INTO guilds (id, name, players) VALUES ($1, $2, $3) RETURNING id`
-
-	err = conn.QueryRow(sql, guild.ID, guild.GuildName, guild.Players).Scan(&id)
-
-	return
-}
-
 func InsertFromJSON(filename string) error {
 	conn, err := db.OpenConnection()
 	if err != nil {
