@@ -2,6 +2,8 @@ import requests
 import json
 import os
 
+guilds = ["Taseif", "Counterplay"]
+
 
 def get_guild_members(guild_name: str) -> list:
     url = f"https://dev.tibiadata.com/v4/guild/{guild_name}"
@@ -87,3 +89,10 @@ def full_process_alchemist(guild_name, world):
             return False
 
     return True
+
+
+if __name__ == "__main__":
+    world = "Inabra"
+    for guild_name in guilds:
+        full_process_alchemist(guild_name, world)
+        print(f"Dados processados de: {guild_name}")
