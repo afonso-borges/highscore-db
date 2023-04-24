@@ -21,8 +21,10 @@ func GetAll() (characters []Character, err error) {
 		if err != nil {
 			continue
 		}
+		if character.DailyExp != 0 {
+			characters = append(characters, character)
+		}
 
-		characters = append(characters, character)
 	}
 	return
 }
