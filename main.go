@@ -1,12 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"highscore-db/configs"
-	"highscore-db/handlers"
-	"net/http"
-
-	"github.com/go-chi/chi/v5"
+	processadados "highscore-db/processa_dados"
 )
 
 func main() {
@@ -15,13 +11,9 @@ func main() {
 		panic(err)
 	}
 
-	r := chi.NewRouter()
-
-	r.Get("/ping", handlers.Ping)
-	r.Post("/create_char", handlers.CreateCharacters)
-	r.Post("/update_daily", handlers.UpdateDailyExp)
-	r.Post("/update_exp", handlers.UpdateExp)
-
-	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
+	_, err = processadados.FullProcessAlchemist()
+	if err != nil {
+		return
+	}
 
 }

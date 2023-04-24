@@ -35,7 +35,7 @@ def create_json(
     characters: list,
     guild_name: str,
 ) -> bool:
-    path = f"{guild_name}_characters.json"
+    path = f"data/{guild_name}_characters.json"
 
     with open(path, "w") as f:
         json.dump(characters, f)
@@ -77,7 +77,7 @@ def update_characters_exp(
 
 
 def full_process_alchemist(guild_name, world):
-    json_path = f"{guild_name}_characters.json"
+    json_path = f"data/{guild_name}_characters.json"
 
     if not create_guild_members_json(guild_name):
         return False
@@ -87,7 +87,7 @@ def full_process_alchemist(guild_name, world):
             continue
         if not update_characters_exp(json_path, world, i):
             return False
-
+    print(f"Dados processados de {guild_name}")
     return True
 
 
@@ -95,4 +95,3 @@ if __name__ == "__main__":
     world = "Inabra"
     for guild_name in guilds:
         full_process_alchemist(guild_name, world)
-        print(f"Dados processados de: {guild_name}")
