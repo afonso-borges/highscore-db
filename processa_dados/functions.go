@@ -8,7 +8,7 @@ import (
 
 func FullProcessAlchemist() (int, error) {
 	start := time.Now()
-
+	fmt.Println("Gerando dados...")
 	err := models.GetNewData("processa_dados/", "processa_dados.py")
 	if err != nil {
 		fmt.Println(err)
@@ -26,6 +26,7 @@ func FullProcessAlchemist() (int, error) {
 		if err != nil {
 			fmt.Println(err)
 		}
+		time.Sleep(time.Millisecond * 15)
 	}
 	time_elapsed := time.Since(start)
 	fmt.Println("Tempo decorrido:", time_elapsed)
