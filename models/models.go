@@ -6,4 +6,5 @@ type Character struct {
 	Level         int    `json:"level"`
 	Exp           int    `json:"exp"`
 	GuildIn       string `json:"guild"`
+	DailyExp      int64  `json:"dailyexp"`
 }

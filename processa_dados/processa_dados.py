@@ -20,8 +20,8 @@ def get_guild_members(guild_name: str) -> list:
             "Level": member_level,
             "Guild": guild_name,
         }
-
-        members.append(member_info)
+        if member.get("level") > 485:
+            members.append(member_info)
 
     return members
 
