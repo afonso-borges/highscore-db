@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func InsertFromJSON(filename string) error {
+func AddNewCharactersFromJson(filename string) error {
 	conn, err := db.OpenConnection()
 	if err != nil {
 		return err
@@ -55,12 +55,14 @@ func readCharactersFromFile(filename string) ([]Character, error) {
 }
 
 func InsertCharacters(characters []Character, db *sql.DB) error {
+	var numAdded int
 	for _, char := range characters {
-		_, err := db.Exec("INSERT INTO characters (name, guild, level, exp) VALUES ($1, $2, $3, $4) ON CONFLICT (name) DO NOTHING",
-			char.CharacterName, char.GuildIn, char.Level, char.Exp)
+		_, err := db.Exec("INSERT INTO characters (name, guild, level, exp, dailyexp) VALUES ($1, $2, $3, $4, $5) ON CONFLICT (name) DO NOTHING",
+			char.CharacterName, char.GuildIn, char.Level, char.Exp, 0)
 		if err != nil {
 			return fmt.Errorf("error inserting character %s: %s", char.CharacterName, err.Error())
 		}
+		numAdded++
 	}
 	return nil
 }

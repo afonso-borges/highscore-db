@@ -50,7 +50,7 @@ func UpdateExpFromJSON(filename string) error {
 	for _, char := range characters {
 
 		// Atualiza o valor de exp no banco de dados para o novo valor
-		_, err = conn.Exec("UPDATE characters SET level=$1, exp=$2 WHERE name=$3", char.Level, char.Exp, char.CharacterName)
+		_, err = conn.Exec("UPDATE characters SET level=$1, exp=$2, dailyexp=$4 WHERE name=$3", char.Level, char.Exp, char.CharacterName, 0)
 		if err != nil {
 			return fmt.Errorf("error ao atualizar o valor de exp para o personagem %s: %v", char.CharacterName, err)
 		}

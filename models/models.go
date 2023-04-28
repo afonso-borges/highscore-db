@@ -8,3 +8,8 @@ type Character struct {
 	GuildIn       string `json:"guild"`
 	DailyExp      int64  `json:"dailyexp"`
 }
+
+type Guild struct {
+	GuildName string `json:"Guild"`
+	ExpAmount int64  `json:"Exp"`
+}
