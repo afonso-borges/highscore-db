@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	processadados "highscore-db/processa_dados"
 	"log"
 	"net/http"
@@ -20,11 +21,11 @@ func RotinaExec(w http.ResponseWriter, r *http.Request) {
 
 	err = processadados.ExecutaRotina(id)
 	if err != nil {
-		log.Println("Erro ao executar rotina 1:", err)
+		log.Println("Erro ao executar rotina:", err)
 	}
 	resp := map[string]any{
 		"success": true,
-		"data":    "Rotina 1 executada com sucesso",
+		"data":    fmt.Sprintf("Rotina %v executada com sucesso", id),
 	}
 
 	w.Header().Add("Content-Type", "application/json")
