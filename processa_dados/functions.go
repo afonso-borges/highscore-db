@@ -7,13 +7,12 @@ import (
 )
 
 func Rotina1() (int, error) {
-	var file_path string
 
-	file_path = "processa_dados/data/arquivo_unificado.json"
+	file_path := "processa_dados/data/arquivo_unificado.json"
 
 	start := time.Now()
 	fmt.Println("Gerando dados...")
-	err := models.GetNewData("processa_dados/", "processa_dados.py")
+	err := FullProcessAlchemist()
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -42,13 +41,12 @@ func Rotina1() (int, error) {
 }
 
 func Rotina2() (int, error) {
-	var file_path string
 
-	file_path = "processa_dados/data/arquivo_unificado.json"
+	file_path := "processa_dados/data/arquivo_unificado.json"
 
 	start := time.Now()
 	fmt.Println("Gerando dados...")
-	err := models.GetNewData("processa_dados/", "processa_dados.py")
+	err := FullProcessAlchemist()
 	if err != nil {
 		fmt.Println(err)
 	}
